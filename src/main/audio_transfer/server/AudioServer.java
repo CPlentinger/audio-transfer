@@ -31,8 +31,7 @@ public class AudioServer extends Thread {
                 Socket connectedSocket = socket.accept();
                 DataInputStream in = new DataInputStream(new BufferedInputStream(connectedSocket.getInputStream()));
                 int count;
-                int bufferSize = (int) audioFormat.getSampleRate()
-                        * audioFormat.getFrameSize();
+                int bufferSize = (int) audioFormat.getSampleRate();
                 byte buffer[] = new byte[bufferSize];
                 in.readFully(buffer);
                 while (buffer.length > 0) {

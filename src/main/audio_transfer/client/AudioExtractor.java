@@ -30,11 +30,11 @@ public class AudioExtractor extends Thread {
     @Override
     public void run() {
         try {
-            Socket s = new Socket("localhost", 9090);
+            Socket s = new Socket("192.168.2.23", 9090);
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
             extractionLine.open(audioFormat);
             extractionLine.start();
-            int bufferSize = (int) audioFormat.getSampleRate() * audioFormat.getFrameSize();
+            int bufferSize = (int) audioFormat.getSampleRate();
             byte buffer[] = new byte[bufferSize];
             while (running) {
                 int count =
